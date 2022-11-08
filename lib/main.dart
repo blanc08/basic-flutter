@@ -1,8 +1,10 @@
+import 'package:basic_flutter/computer_view.dart';
+import 'package:basic_flutter/radio_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
       title: 'Navigation',
@@ -10,30 +12,62 @@ void main() {
   );
 }
 
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  // This widget is the root of your application.
+class Home extends StatefulWidget {
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  late TabController controller;
+
+  @override
+  void initState() {
+    controller = TabController(length: 2, vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.home),
-        title: const Text('Navigation'),
-      ),
-      body: Center(
-        child: IconButton(
-            icon: const Icon(
-              Icons.headset,
-              size: 50,
+        title: const Text('Electronic'),
+        bottom: TabBar(
+          controller: controller,
+          tabs: const <Widget>[
+            Tab(
+              icon: Icon(Icons.computer),
             ),
-            // ignore: avoid_print
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Settings()),
-              );
-            }),
+            Tab(
+              icon: Icon(Icons.radio),
+            ),
+          ],
+        ),
+      ),
+      body: TabBarView(
+        controller: controller,
+        children: const [
+          ComputerView(),
+          RadioView(),
+        ],
+      ),
+      bottomNavigationBar: Material(
+        color: Colors.blue,
+        child: TabBar(
+          controller: controller,
+          tabs: const <Widget>[
+            Tab(
+              icon: Icon(Icons.computer),
+            ),
+            Tab(
+              icon: Icon(Icons.radio),
+            ),
+          ],
+        ),
       ),
     );
   }
