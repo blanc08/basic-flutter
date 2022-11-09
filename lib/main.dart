@@ -1,10 +1,11 @@
 import 'package:basic_flutter/computer_view.dart';
+import 'package:basic_flutter/dashboard_view.dart';
 import 'package:basic_flutter/radio_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
       title: 'Navigation',
@@ -13,6 +14,8 @@ void main() {
 }
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   State<Home> createState() => _HomeState();
 }
@@ -22,7 +25,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    controller = TabController(length: 2, vsync: this);
+    controller = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -32,6 +35,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -45,14 +49,20 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             Tab(
               icon: Icon(Icons.radio),
             ),
+            Tab(
+              icon: Icon(Icons.dashboard),
+            ),
           ],
         ),
       ),
       body: TabBarView(
         controller: controller,
-        children: const [
-          ComputerView(),
-          RadioView(),
+        children: [
+          const ComputerView(),
+          RadioView(
+            data: List<String>.generate(300, (index) => "ini data ke $index"),
+          ),
+          const DashboardView(),
         ],
       ),
       bottomNavigationBar: Material(
@@ -65,6 +75,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
             Tab(
               icon: Icon(Icons.radio),
+            ),
+            Tab(
+              icon: Icon(Icons.dashboard),
             ),
           ],
         ),

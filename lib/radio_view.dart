@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
 
 class RadioView extends StatelessWidget {
-  const RadioView({super.key});
+  final List<String> data;
+  const RadioView({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Column(
-          children: const <Widget>[
-            Text(
-              "Radio",
-              style: TextStyle(fontSize: 30.0),
-            ),
-            Padding(padding: EdgeInsets.all(20.0)),
-            Image(
-              image: NetworkImage(
-                  "http://sc04.alicdn.com/kf/H82fafd9d69ea4d8fa57804b43f797a9ci.jpg"),
-              width: 20.0,
-            )
-          ],
-        ),
-      ),
-    );
+        child: ListView.builder(
+      itemCount: data.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          leading: const Icon(Icons.widgets),
+          title: Text(data[index]),
+        );
+      },
+    ));
   }
 }
