@@ -14,10 +14,11 @@ class RadioView extends StatelessWidget {
               style: TextStyle(fontSize: 30.0),
             ),
             Padding(padding: EdgeInsets.all(20.0)),
-            Icon(
-              Icons.radio,
-              size: 90.0,
-            ),
+            Image(
+              image: NetworkImage(
+                  "http://sc04.alicdn.com/kf/H82fafd9d69ea4d8fa57804b43f797a9ci.jpg"),
+              width: 20.0,
+            )
           ],
         ),
       ),
