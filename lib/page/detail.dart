@@ -11,13 +11,22 @@ class DetailPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('id: ${posts.id}'),
-          Text('Title: ${posts.title}'),
-          const SizedBox(
-            height: 20.0,
+          // Text(
+          //   'id: ${posts.id}',
+          //   style: const TextStyle(fontSize: 12),
+          // ),
+          Text(
+            'Title: ${posts.title}',
+            style: const TextStyle(fontSize: 18),
           ),
-          const Text('Body : '),
-          Text(posts.body),
+          // const SizedBox(
+          //   height: 20.0,
+          // ),
+          Text(
+            'Body : ${posts.body}',
+            style: const TextStyle(fontSize: 12),
+          ),
+          // Text(posts.body),
         ],
       ),
     );

@@ -40,20 +40,20 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Electronic'),
-        bottom: TabBar(
-          controller: controller,
-          tabs: const <Widget>[
-            Tab(
-              icon: Icon(Icons.computer),
-            ),
-            Tab(
-              icon: Icon(Icons.radio),
-            ),
-            Tab(
-              icon: Icon(Icons.dashboard),
-            ),
-          ],
-        ),
+        // bottom: TabBar(
+        //   controller: controller,
+        //   tabs: const <Widget>[
+        //     Tab(
+        //       icon: Icon(Icons.computer),
+        //     ),
+        //     Tab(
+        //       icon: Icon(Icons.radio),
+        //     ),
+        //     Tab(
+        //       icon: Icon(Icons.dashboard),
+        //     ),
+        //   ],
+        // ),
       ),
       body: TabBarView(
         controller: controller,
